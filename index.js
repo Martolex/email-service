@@ -1,5 +1,4 @@
 var aws = require("aws-sdk");
-var nodemailer = require("nodemailer");
 const { Book, Order, OrderItem, User, BookRent } = require("./db");
 const BuildOrderEmail = require("./EmailTemplates/orderConfirmation");
 aws.config.update({ region: "ap-south-1" });
