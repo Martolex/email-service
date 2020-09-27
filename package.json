@@ -4,7 +4,8 @@
   "description": "Microservice to send emails to users",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "deploy": "aws lambda update-function-code --function-name email-service --zip-file fileb://build.zip"
   },
   "author": "Deepanshu Vangani",
   "license": "ISC",

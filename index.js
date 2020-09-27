@@ -5,16 +5,16 @@ aws.config.update({ region: "ap-south-1" });
 var ses = new aws.SES({ apiVersion: "2010-12-01" });
 
 exports.handler = async function (event, context, callback) {
-  let requestBody = event.body;
+  console.log(event);
 
-  if (!requestBody.orderId) {
+  if (!event.orderId) {
     callback(null, {
       statusCode: 400,
       body: JSON.stringify({ code: 0, message: "orderId not available" }),
     });
     return;
   }
-  const orderDetails = await Order.findByPk(requestBody.orderId, {
+  const orderDetails = await Order.findByPk(event.orderId, {
     attributes: ["deliveryAmount"],
     include: [
       {
