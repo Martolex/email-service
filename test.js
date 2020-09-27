@@ -1,9 +1,9 @@
 const { handler } = require("./index");
 const requestBody = {
-  orderId: "82fd2bd4-6039-487d-bd9f-fda549c4004d",
+  orderId: "ce9ebbd7-1ac0-448e-8a37-1056f8a6ea75",
 };
 const event = {
-  body: JSON.stringify(requestBody),
+  body: requestBody,
 };
 
 const context = JSON.stringify({ string: "abcd" });

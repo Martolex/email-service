@@ -8,8 +8,10 @@
   },
   "author": "Deepanshu Vangani",
   "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.761.0"
+  },
   "dependencies": {
-    "aws-sdk": "^2.761.0",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.4.11",
     "sequelize": "^6.3.5"

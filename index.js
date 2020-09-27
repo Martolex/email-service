@@ -3,16 +3,16 @@ var nodemailer = require("nodemailer");
 const { Book, Order, OrderItem, User, BookRent } = require("./db");
 const BuildOrderEmail = require("./EmailTemplates/orderConfirmation");
 aws.config.update({ region: "ap-south-1" });
-var ses = new aws.SES();
+var ses = new aws.SES({ apiVersion: "2010-12-01" });
 
 exports.handler = async function (event, context, callback) {
-  let requestBody = JSON.parse(event.body);
+  let requestBody = event.body;
+
   if (!requestBody.orderId) {
     callback(null, {
       statusCode: 400,
       body: JSON.stringify({ code: 0, message: "orderId not available" }),
     });
-    console.log("here");
     return;
   }
   const orderDetails = await Order.findByPk(requestBody.orderId, {
@@ -39,29 +39,41 @@ exports.handler = async function (event, context, callback) {
     });
     return;
   }
-  console.log(orderDetails.toJSON());
 
-  var mailOptions = {
-    from: "info@martolex.com",
-    subject: "Order Confirmation",
-    html: BuildOrderEmail(orderDetails),
-    to: orderDetails.user.email,
+  var params = {
+    Destination: {
+      ToAddresses: [orderDetails.user.email],
+    },
+    Message: {
+      Body: {
+        Html: {
+          Charset: "UTF-8",
+          Data: BuildOrderEmail(orderDetails),
+        },
+      },
+      Subject: {
+        Charset: "UTF-8",
+        Data: "Order Confirmation",
+      },
+    },
+    Source: "info@martolex.com",
   };
-  // console.log(mailOptions);
 
-  // // create Nodemailer SES transporter
-  var transporter = nodemailer.createTransport({
-    SES: ses,
-  });
+  try {
+    await ses.sendEmail(params).promise();
 
-  // send email
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      console.log("Error sending email");
-      callback(err);
-    } else {
-      console.log("Email sent successfully");
-      callback();
-    }
-  });
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify({ code: 1, message: "email sent" }),
+    });
+  } catch (err) {
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify({
+        code: 0,
+        message: "email not sent",
+        err: err.message,
+      }),
+    });
+  }
 };
