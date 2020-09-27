@@ -1,0 +1,17 @@
+{
+  "name": "email-lambda",
+  "version": "1.0.0",
+  "description": "Microservice to send emails to users",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Deepanshu Vangani",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.761.0",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.11",
+    "sequelize": "^6.3.5"
+  }
+}
