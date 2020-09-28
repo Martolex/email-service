@@ -1,11 +1,9 @@
 const config = {
-  env: process.env.NODE_ENV || "prod",
-  dbName: process.env.DBNAME || "martolexdb",
-  dbHost:
-    process.env.DBHOST ||
-    "martolexdb.c6goceb9tkvq.ap-south-1.rds.amazonaws.com",
-  dbUserName: process.env.DBUSER || "martolex",
-  dbPassword: process.env.DBPASSWORD || "martolex2019",
+  env: process.env.NODE_ENV || "dev",
+  dbName: process.env.DBNAME || "martolex-new",
+  dbHost: process.env.DBHOST || "localhost",
+  dbUserName: process.env.DBUSER || "root",
+  dbPassword: process.env.DBPASSWORD || "",
   dbPort: process.env.DBPORT || 3306,
 };
 
