@@ -1,10 +1,15 @@
 const { handler } = require("./index");
-const requestBody = {
+const OrderRecieptRequestBody = {
+  type: "ORDER_RECEIPT",
   orderId: "ce9ebbd7-1ac0-448e-8a37-1056f8a6ea75",
 };
-const event = {
-  body: requestBody,
+
+const ForgotPasswordRequestBody = {
+  type: "FORGOT_PASSWORD",
+  email: "vanganideepanshu@gmail.com",
+  link: "https://www.google.com",
 };
+const event = ForgotPasswordRequestBody;
 
 const context = JSON.stringify({ string: "abcd" });
 try {
