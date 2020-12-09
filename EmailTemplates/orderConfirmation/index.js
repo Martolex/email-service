@@ -7,6 +7,11 @@ const itemPrice = (item) => {
       : item.book.rent.deposit;
   return total;
 };
+
+const returnAmount = (item) =>
+  item.plan !== plans.SELL
+    ? item.book.rent.deposit - item.book.rent[item.plan]
+    : 0;
 const calcSubTotal = (items) =>
   items.reduce((total, item) => total + item.qty * itemPrice(item), 0);
 
@@ -142,7 +147,7 @@ const rowToHtml = (item) => `<div style="background-color:transparent;">
 											style="line-height: 1.5; font-size: 12px; color: #4caf50; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 18px;">
 													<p
 													style="line-height: 1.5; word-break: break-word; text-align: right; mso-line-height-alt: 18px; margin: 0;">
-													<strong>₹${item.book.rent.deposit}/- Refundable</strong></p>
+													<strong>₹${returnAmount(item)}/- Refundable</strong></p>
 													</div>
 											</div>
 											<!--[if mso]></td></tr></table><![endif]-->
