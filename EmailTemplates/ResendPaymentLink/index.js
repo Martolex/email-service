@@ -346,30 +346,29 @@ const buildResendPaymentLinkEmail = (order, paymentLink) => {
                             </div>
                         </div>
                         <div style="background-color:transparent;">
-                            <div class="block-grid " style="min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
-                                <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-                                    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:620px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-                                    <!--[if (mso)|(IE)]><td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-                                    <div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;">
-                                        <div class="col_cont" style="width:100% !important;">
-                                            <!--[if (!mso)&(!IE)]><!-->
-                                            <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-                                                <!--<![endif]-->
-                                                <div class="button-container" align="center" style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-                                                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${paymentLink}" style="height:33pt; width:300pt; v-text-anchor:middle;" arcsize="10%" strokeweight="0.75pt" strokecolor="#3ac6bf" fillcolor="#3ac6bf"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:Tahoma, Verdana, sans-serif; font-size:16px"><![endif]-->
-                                                    <a style="text-decoration:none;" href="${paymentLink}"><div style="text-decoration:none;display:block;color:#ffffff;background-color:#3ac6bf;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;width:50%; width:calc(50% - 2px);;border-top:1px solid #3ac6bf;border-right:1px solid #3ac6bf;border-bottom:1px solid #3ac6bf;border-left:1px solid #3ac6bf;padding-top:5px;padding-bottom:5px;font-family:Lato, Tahoma, Verdana, Segoe, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:50px;padding-right:50px;font-size:16px;display:inline-block;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">PAY NOW</span></span></div></a>
-                                                    <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-                                                </div>
-                                                <!--[if (!mso)&(!IE)]><!-->
-                                            </div>
-                                            <!--<![endif]-->
-                                        </div>
-                                    </div>
-                                    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                    <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-                                </div>
-                            </div>
-                        </div>
+						<div class="block-grid " style="min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:620px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;">
+									<div class="col_cont" style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<div class="button-container" align="center" style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${paymentLink}" style="height:33pt; width:300pt; v-text-anchor:middle;" arcsize="10%" strokeweight="0.75pt" strokecolor="#3ac6bf" fillcolor="#3ac6bf"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:Tahoma, Verdana, sans-serif; font-size:16px"><![endif]--><a href="https://www.google.com" target="_blank" style="-webkit-text-size-adjust: none; text-decoration: none; display: block; color: #ffffff; background-color: #3ac6bf; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width: 50%; width: calc(50% - 2px); border-top: 1px solid #3ac6bf; border-right: 1px solid #3ac6bf; border-bottom: 1px solid #3ac6bf; border-left: 1px solid #3ac6bf; padding-top: 5px; padding-bottom: 5px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;"><span style="padding-left:50px;padding-right:50px;font-size:16px;display:inline-block;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">PAY NOW</span></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
                         <div style="background-color:transparent;">
                             <div class="block-grid mixed-two-up no-stack" style="min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #000000;">
                                 <div style="border-collapse: collapse;display: table;width: 100%;background-color:#000000;">
