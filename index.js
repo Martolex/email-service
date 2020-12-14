@@ -1,5 +1,6 @@
 var aws = require("aws-sdk");
 const { Book, Order, OrderItem, User, BookRent } = require("./db");
+const db = require("./db/connection");
 const BuildOrderEmail = require("./EmailTemplates/orderConfirmation");
 const {
   orderReceipt,
@@ -11,6 +12,13 @@ aws.config.update({ region: "ap-south-1" });
 var ses = new aws.SES({ apiVersion: "2010-12-01" });
 
 exports.handler = async function (event, context, callback) {
+  try {
+    console.log("connecting to db");
+    await db.authenticate();
+    console.log("connected");
+  } catch (err) {
+    console.error(err);
+  }
   console.log(event.type);
   switch (event.type) {
     case EventTypes.ORDER_RECEIPT:
