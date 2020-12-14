@@ -10,22 +10,26 @@ module.exports = async (event, callback, ses) => {
     return;
   }
   console.log("retrieve order");
-  const orderDetails = await Order.findByPk(event.orderId, {
-    attributes: ["deliveryAmount"],
-    include: [
-      {
-        model: OrderItem,
-        as: "items",
-        include: {
-          model: Book,
-          as: "book",
-          attributes: ["name"],
-          include: { model: BookRent, as: "rent" },
+  try {
+    const orderDetails = await Order.findByPk(event.orderId, {
+      attributes: ["deliveryAmount"],
+      include: [
+        {
+          model: OrderItem,
+          as: "items",
+          include: {
+            model: Book,
+            as: "book",
+            attributes: ["name"],
+            include: { model: BookRent, as: "rent" },
+          },
         },
-      },
-      { model: User, as: "user", attributes: ["email", "name"] },
-    ],
-  });
+        { model: User, as: "user", attributes: ["email", "name"] },
+      ],
+    });
+  } catch (err) {
+    console.log(err);
+  }
   console.log("check validity");
   if (!orderDetails) {
     callback(null, {
