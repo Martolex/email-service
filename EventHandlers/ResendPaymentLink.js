@@ -27,7 +27,6 @@ module.exports = async (event, callback, ses) => {
       { model: User, as: "user", attributes: ["email", "name"] },
     ],
   });
-  console.log(orderDetails);
   console.log("check validity");
   if (!orderDetails) {
     callback(null, {
