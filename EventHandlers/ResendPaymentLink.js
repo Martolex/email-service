@@ -9,6 +9,7 @@ module.exports = async (event, callback, ses) => {
     });
     return;
   }
+  console.log("retrieve order");
   const orderDetails = await Order.findByPk(event.orderId, {
     attributes: ["deliveryAmount"],
     include: [
@@ -25,7 +26,7 @@ module.exports = async (event, callback, ses) => {
       { model: User, as: "user", attributes: ["email", "name"] },
     ],
   });
-
+  console.log("check validity");
   if (!orderDetails) {
     callback(null, {
       statusCode: 400,
@@ -54,6 +55,7 @@ module.exports = async (event, callback, ses) => {
   };
 
   try {
+    console.log("send email");
     await ses.sendEmail(params).promise();
 
     callback(null, {
@@ -61,6 +63,7 @@ module.exports = async (event, callback, ses) => {
       body: JSON.stringify({ code: 1, message: "email sent" }),
     });
   } catch (err) {
+    console.log(err);
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({
