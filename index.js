@@ -22,13 +22,13 @@ exports.handler = async function (event, context, callback) {
   console.log(event.type);
   switch (event.type) {
     case EventTypes.ORDER_RECEIPT:
-      orderReceipt(event, callback, ses);
+      await orderReceipt(event, callback, ses);
       break;
     case EventTypes.FORGOT_PASSWORD:
-      forgotPassword(event, callback, ses);
+      await forgotPassword(event, callback, ses);
       break;
     case EventTypes.RESEND_PAYMENT_LINK:
-      resendPayment(event, callback, ses);
+      await resendPayment(event, callback, ses);
       break;
     default:
       callback(null, {
