@@ -1,7 +1,11 @@
 var aws = require("aws-sdk");
 const { Book, Order, OrderItem, User, BookRent } = require("./db");
 const BuildOrderEmail = require("./EmailTemplates/orderConfirmation");
-const { orderReceipt, forgotPassword } = require("./EventHandlers");
+const {
+  orderReceipt,
+  forgotPassword,
+  resendPayment,
+} = require("./EventHandlers");
 const EventTypes = require("./EventTypes");
 aws.config.update({ region: "ap-south-1" });
 var ses = new aws.SES({ apiVersion: "2010-12-01" });
@@ -14,6 +18,9 @@ exports.handler = async function (event, context, callback) {
       break;
     case EventTypes.FORGOT_PASSWORD:
       forgotPassword(event, callback, ses);
+      break;
+    case EventTypes.RESEND_PAYMENT_LINK:
+      resendPayment(event, callback, ses);
       break;
     default:
       callback(null, {
