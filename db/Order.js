@@ -18,6 +18,7 @@ Order.init(
     },
     gatewayRefId: { type: DataTypes.STRING },
     gateWayMode: { type: DataTypes.STRING },
+    gatewayOrderId: { type: DataTypes.STRING },
     deliveryMinDate: { type: DataTypes.DATE },
     deliveryMaxDate: { type: DataTypes.DATE },
     actualDeliveryDate: { type: DataTypes.DATE },

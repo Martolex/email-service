@@ -2,14 +2,15 @@ const { Order, BookRent, OrderItem, Book, User } = require("../db");
 const buildOrderEmail = require("../EmailTemplates/orderConfirmation");
 
 module.exports = async (event, callback, ses) => {
-  if (!event.orderId) {
+  if (!event.gatewayId) {
     callback(null, {
       statusCode: 400,
       body: JSON.stringify({ code: 0, message: "orderId not available" }),
     });
     return;
   }
-  const orderDetails = await Order.findByPk(event.orderId, {
+  const orders = await Order.findAll({
+    where: { gatewayOrderId: event.gatewayId },
     attributes: ["deliveryAmount"],
     include: [
       {
@@ -26,7 +27,7 @@ module.exports = async (event, callback, ses) => {
     ],
   });
 
-  if (!orderDetails) {
+  if (!orderDetails || orderDetails.length == 0) {
     callback(null, {
       statusCode: 400,
       body: JSON.stringify({ code: 0, message: "orderId not valid" }),
@@ -34,7 +35,7 @@ module.exports = async (event, callback, ses) => {
     return;
   }
 
-  var params = {
+  const mails = orders.map((orderDetails) => ({
     Destination: {
       ToAddresses: [orderDetails.user.email],
     },
@@ -51,11 +52,11 @@ module.exports = async (event, callback, ses) => {
       },
     },
     Source: "Order Confirmation <info@martolex.com>",
-  };
+  }));
 
   try {
-    await ses.sendEmail(params).promise();
-
+    const mailPromise = mails.map((mail) => ses.sendEmail(mail).promise());
+    await Promise.all(mailPromise);
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({ code: 1, message: "email sent" }),
