@@ -27,7 +27,7 @@ module.exports = async (event, callback, ses) => {
     ],
   });
 
-  if (!orderDetails || orderDetails.length == 0) {
+  if (!orders || orders.length == 0) {
     callback(null, {
       statusCode: 400,
       body: JSON.stringify({ code: 0, message: "orderId not valid" }),
